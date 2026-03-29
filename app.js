@@ -9,20 +9,18 @@
     window.navigator.standalone === true;
 
   if (isStandalone) {
-    // Show splash and redirect immediately
+    // Hide landing, show splash, and redirect immediately
+    document.getElementById('landing').hidden = true;
     document.getElementById('splash').hidden = false;
     window.location.href = DM_URL;
     return;
   }
 
-  // Browser mode — show landing page
-  document.getElementById('landing').hidden = false;
-
   // Platform detection
   var ua = navigator.userAgent;
   var isIOS =
     /iPad|iPhone|iPod/.test(ua) ||
-    (navigator.maxTouchPoints > 0 && /Macintosh/.test(ua));
+    (navigator.maxTouchPoints > 1 && /Macintosh/.test(ua));
   var isAndroid = /Android/.test(ua);
 
   // Show platform-specific install instructions
