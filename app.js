@@ -4,9 +4,15 @@
   var DM_URL = 'https://www.instagram.com/direct/inbox/';
 
   // Detect if running as installed PWA
-  var isStandalone =
-    window.matchMedia('(display-mode: standalone)').matches ||
-    window.navigator.standalone === true;
+  // Only redirect if truly launched from home screen, not in a normal browser tab
+  var isStandalone = false;
+  if (window.navigator.standalone === true) {
+    // iOS Safari standalone mode
+    isStandalone = true;
+  } else if (window.matchMedia('(display-mode: standalone)').matches && !window.menubar.visible) {
+    // Android/Desktop PWA: standalone display mode AND no browser chrome
+    isStandalone = true;
+  }
 
   if (isStandalone) {
     // Hide landing, show splash, and redirect immediately
