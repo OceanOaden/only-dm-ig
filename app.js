@@ -10,16 +10,9 @@
     });
   }
 
-  // Detect if running as installed PWA
-  // Use URL parameter from manifest start_url — most reliable method
+  // If launched as installed PWA, redirect straight to DMs
   var params = new URLSearchParams(window.location.search);
-  var isStandalone =
-    params.has('standalone') ||
-    window.navigator.standalone === true;
-
-  if (isStandalone) {
-    document.getElementById('landing').hidden = true;
-    document.getElementById('splash').hidden = false;
+  if (params.has('standalone') || window.navigator.standalone === true) {
     window.location.href = DM_URL;
     return;
   }
