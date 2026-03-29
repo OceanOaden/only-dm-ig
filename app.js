@@ -11,11 +11,11 @@
   }
 
   // Detect if running as installed PWA
-  // navigator.standalone is iOS-only. display-mode: standalone is the standard check.
-  // In a normal browser tab, both should be false/undefined.
+  // Use URL parameter from manifest start_url — most reliable method
+  var params = new URLSearchParams(window.location.search);
   var isStandalone =
-    window.navigator.standalone === true ||
-    window.matchMedia('(display-mode: standalone)').matches;
+    params.has('standalone') ||
+    window.navigator.standalone === true;
 
   if (isStandalone) {
     document.getElementById('landing').hidden = true;

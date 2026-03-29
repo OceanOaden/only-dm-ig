@@ -2,7 +2,7 @@
   "name": "IG DM Only",
   "short_name": "IG DM",
   "description": "Check Instagram DMs without the addictive feed",
-  "start_url": "./",
+  "start_url": "./?standalone=1",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#833AB4",
