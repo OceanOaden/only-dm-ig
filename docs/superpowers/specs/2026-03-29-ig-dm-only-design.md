@@ -6,14 +6,15 @@ A static PWA that redirects users to Instagram's DM inbox. No backend, no tracki
 
 ## Architecture
 
-Six files served statically:
+Seven files served statically:
 
 ```
 /
-├── index.html          # Landing page + redirect logic
+├── index.html          # Landing page structure and content
+├── app.js              # Standalone detection, platform detection, redirect logic
+├── style.css           # Styles with light/dark mode via prefers-color-scheme
 ├── manifest.json       # PWA manifest
 ├── sw.js               # Minimal service worker (installability only)
-├── style.css           # Styles with light/dark mode via prefers-color-scheme
 ├── icons/
 │   ├── icon-192.png    # Placeholder (192x192)
 │   └── icon-512.png    # Placeholder (512x512)
@@ -134,7 +135,7 @@ No caching strategy. The landing page is tiny and the PWA immediately navigates 
 
 ## Hosting
 
-GitHub Pages, served from the repo root. All paths in `manifest.json` and `index.html` use root-relative URLs (e.g., `/icons/icon-192.png`). No custom domain initially.
+GitHub Pages, served from the repo root. All paths in `manifest.json` and `index.html` use relative URLs (e.g., `./icons/icon-192.png`) so the PWA works on both GitHub Pages subpaths and custom domains. No custom domain initially.
 
 ## Placeholder Icons
 
