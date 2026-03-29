@@ -3,19 +3,21 @@
 
   var DM_URL = 'https://www.instagram.com/direct/inbox/';
 
-  // Detect if running as installed PWA
-  // Only redirect if truly launched from home screen, not in a normal browser tab
-  var isStandalone = false;
-  if (window.navigator.standalone === true) {
-    // iOS Safari standalone mode
-    isStandalone = true;
-  } else if (window.matchMedia('(display-mode: standalone)').matches && !window.menubar.visible) {
-    // Android/Desktop PWA: standalone display mode AND no browser chrome
-    isStandalone = true;
+  // Clear any old service workers that may be serving stale content
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function (registrations) {
+      registrations.forEach(function (r) { r.unregister(); });
+    });
   }
 
+  // Detect if running as installed PWA
+  // navigator.standalone is iOS-only. display-mode: standalone is the standard check.
+  // In a normal browser tab, both should be false/undefined.
+  var isStandalone =
+    window.navigator.standalone === true ||
+    window.matchMedia('(display-mode: standalone)').matches;
+
   if (isStandalone) {
-    // Hide landing, show splash, and redirect immediately
     document.getElementById('landing').hidden = true;
     document.getElementById('splash').hidden = false;
     window.location.href = DM_URL;
@@ -46,7 +48,7 @@
     this.hidden = true;
   });
 
-  // Register service worker
+  // Register service worker for PWA installability
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js');
   }
