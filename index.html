@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IG DM Only</title>
+  <meta name="description" content="Check Instagram DMs without the addictive feed">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#833AB4">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- Splash screen (shown in PWA mode before redirect) -->
+  <div id="splash" class="splash" hidden>
+    <img src="./icons/icon-192.png" alt="IG DM Only" class="splash-icon">
+    <p class="splash-text">Opening your DMs...</p>
+  </div>
+
+  <!-- Landing page (shown in browser mode) -->
+  <main id="landing" class="landing" hidden>
+    <section class="hero">
+      <img src="./icons/icon-192.png" alt="IG DM Only" class="hero-icon">
+      <h1>IG DM Only</h1>
+      <p class="tagline">Check your Instagram DMs without the addictive feed</p>
+    </section>
+
+    <section class="how-it-works">
+      <h2>How it works</h2>
+      <ol>
+        <li><strong>Install</strong> — Add this app to your home screen</li>
+        <li><strong>Open</strong> — Tap the icon like any other app</li>
+        <li><strong>DMs</strong> — You're taken straight to your Instagram inbox</li>
+      </ol>
+    </section>
+
+    <section class="install-instructions">
+      <h2>Install</h2>
+      <div id="install-ios" class="platform-instructions" hidden>
+        <h3>iOS (Safari)</h3>
+        <ol>
+          <li>Tap the <strong>Share</strong> button (square with arrow) at the bottom of Safari</li>
+          <li>Scroll down and tap <strong>"Add to Home Screen"</strong></li>
+          <li>Tap <strong>"Add"</strong> in the top right</li>
+        </ol>
+      </div>
+      <div id="install-android" class="platform-instructions" hidden>
+        <h3>Android (Chrome)</h3>
+        <ol>
+          <li>Tap the <strong>menu</strong> button (⋮) in the top right</li>
+          <li>Tap <strong>"Add to Home screen"</strong></li>
+          <li>Tap <strong>"Add"</strong> to confirm</li>
+        </ol>
+      </div>
+      <div id="install-desktop" class="platform-instructions" hidden>
+        <h3>Desktop (Chrome / Edge)</h3>
+        <ol>
+          <li>Click the <strong>install icon</strong> (⊕) in the address bar</li>
+          <li>Click <strong>"Install"</strong> to confirm</li>
+        </ol>
+      </div>
+      <button id="show-all-platforms" class="link-button">Show instructions for other platforms</button>
+    </section>
+
+    <section class="privacy">
+      <h2>Privacy</h2>
+      <p>IG DM Only collects no data, requires no account, and has no tracking or analytics. It's a simple redirect to Instagram's DM page. The code is fully open source.</p>
+    </section>
+
+    <footer class="footer">
+      <a href="https://github.com/OceanOaden/only-dm-ig" target="_blank" rel="noopener">View on GitHub</a>
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
